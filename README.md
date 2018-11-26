@@ -2,6 +2,10 @@
 First things first, we'd like to extend our appologies to Santa's Little Helper, Marge and Snowball II for not being
 included in our classifier.   
 
+## Disclaimer
+Given the RGB nature of this exercise, it would take about an hour to finish the training part over 3000 sample images in 30 epochs using an average GPU even though the dataset size may not seem big. So it is strongly recommedned not to try this on a CPU computer unless the user does not have access to a GPU.
+
+
 ## Dataset 
 
 The credit of collecting and preparing the Simpsons characters goes to <a href="https://www.kaggle.com/alexattia/the-simpsons-characters-datasetdataset" title="alexattia">alexattia</a> from Kaggle.
@@ -20,7 +24,7 @@ To unzip the main file
 the-simpsons-dataset.zip
 ```
 
-we have included a block in main_train.py that does this automatically:
+after having it downloaded, you may use the following block in main_train.py that does this automatically:
 
 ```ruby
 def extract(filename, force=False):
@@ -38,5 +42,18 @@ def extract(filename, force=False):
 
 data_folder = extract(dest_filename)
 ```
+We have three folders: train (3000 images), validation (1000 images) and test (800 images), each of which
+contains four directories for each character. 
+Once an image is read, the code takes the color data and stores it in an array together with 
+the label that counts as the name of the folder it is being fed from.
+
+```ruby
+              R = im[:, :, 0]
+              G = im[:, :, 1]
+              B = im[:, :, 2]
+              x_test.append([R, G, B])  
+              y_test.append([label]) 
+```
+
 
 ![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/simpson-family.gif)
