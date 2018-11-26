@@ -13,24 +13,9 @@ Please download the dataset from the following link:
 https://drive.google.com/file/d/1jDQcJvCmPn7q-eo-cT2fioNY-spavmUH/view
 """
 
-# upload the simpsons dataset (the dataset you just downloaded to your local computer). I tried to automate this process using wget command and giving it the link. But had problems with Google drive links. If you come up with automate the process please let me know.
-from google.colab import files
-
-uploaded = files.upload()
-
-for fn in uploaded.keys():
-  print('User uploaded file "{name}" with length {length} bytes'.format(
-      name=fn, length=len(uploaded[fn])))
-
-"""Unzipping the zipped dataset."""
-
-!unzip the-simpsons-dataset.zip >/dev/null
-
-!ls
 
 """All packages needed"""
 
-!pip install -q imageio
 import shutil
 import numpy as np
 import matplotlib.pyplot as plt
@@ -54,10 +39,31 @@ from keras.utils import np_utils
 from keras.preprocessing.image import ImageDataGenerator
 from keras.applications import VGG16
 
+
+# upload the simpsons dataset (the dataset you just downloaded to your local computer). 
+
+mainpath = '/Users/...'
+dest_filename = os.path.join(mainpath, 'the-simpsons-dataset.zip')
+
+
+def extract(filename, force=False):
+    root = os.path.splitext(os.path.splitext(filename)[0])[0]  # remove .zip
+    if os.path.isdir(root) and not force:
+        print('%s already present - Skipping extraction of %s.' % (root, filename))
+    else:
+        print('Extracting data for %s. This may take a while. Please wait.' % root)
+        zip = zipfile.ZipFile(filename)
+        sys.stdout.flush()
+        zip.extractall(mainpath)
+        zip.close()
+        print("Extraction done!")
+    return root
+
+#main folder containing the entire dataset (after unzipping the file uploaded)
+data_folder = extract(dest_filename)
+
+
 """#Prepare the dataset"""
-
-data_folder = '/content/the-simpsons-dataset'
-
 
 #Change image shape to a uniform one across all dataset
 img_w = 160   #image width
@@ -307,5 +313,3 @@ plt.title('Training and validation loss')
 plt.legend()
 
 plt.show()
-
-"""![alt text](https://i0.wp.com/www.cordcuttersnews.com/wp-content/uploads/2017/07/simpsons-2.jpg?ssl=1)"""
