@@ -1,19 +1,6 @@
 # -*- coding: utf-8 -*-
 """Alireza Behtash
 
-# Classify the Simpsons family pictures into 4 clategories: Homer, Marge, Bart, and Lisa
-
-## Dataset
-
-The credit of collecting and preparing the Simpsons characters dataset goes to alexattia from Kaggle: https://www.kaggle.com/alexattia/the-simpsons-characters-dataset
-We have downloaded this original dataset, eddited and modified it for our purposes. (The credit of doing this goes to Behnam Kia, NCSU.)
-To see the original dataset please follow the Kaggle link above.
-
-Please download the dataset from the following link:
-https://drive.google.com/file/d/1jDQcJvCmPn7q-eo-cT2fioNY-spavmUH/view
-"""
-
-
 """All packages needed"""
 
 import shutil
