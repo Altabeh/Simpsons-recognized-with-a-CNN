@@ -180,7 +180,5 @@ Here is my final performance analysis summary.
 ![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/val_acc_pretrained.png)
 ![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/val_loss_pretrained.png)
 
-Best,
 
-Alireza Behtash
 ![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/simpson-family.gif)
