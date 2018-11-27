@@ -102,7 +102,8 @@ Finally it is time to design a 'good' CNN for our training purpose. A good CNN i
 does the job with all we have done so far up to an accuracy of ~ 94%. You might wonder why I pulled this magic number and not 
 anything else. All you have to remember is that machine learning has a theory behind it, I'd personally like to call it (discrete) <b>Morse theory</b> in mathematics that has been sucessfull applied to many physics problems (A cost function is a Morse function, see <a href="https://en.wikipedia.org/wiki/Morse_theory" title="this">this</a> page for a definition). But practicaclly speaking, it is not quite Morse theory telling us what a good model is. It is all about <b>experimentation</b>. Well, yeah it is all experimentally verified with some nominal fluctuation due to noise and local machine performance, and etc. 
 
-Any good model (as far as my experiments are considered 'legit'!) I stumbled upon tends to have more neurons in the finally hidden layers. Something like this would work up to an accuracy of 94.25% I talked about previously:
+Any good model (as far as my experiments are considered 'legit'!) I stumbled upon tends to have more neurons in the finally hidden layers. Something like this would work up to an accuracy of 94.25% on the 
+test dataset over 30 epochs using RMSprop as our optimizer:
 ```ruby
 #Model definition
 model = Sequential()
@@ -125,7 +126,18 @@ A yet another technique for avoiding memorization is the use of some sort of reg
 in machine learning. The lore is that you don't want to get a high accuracy without a large 
 learning capacity. So don't forget about those dropout layers; sure you want a smart model! 
 Again, nothing about our model is cut-and-dried. Try your own model and see in what ways you can improve this.
-
+So after training, this piece of code 
+```ruby
+loss, acc = model.evaluate_generator(test_generator, verbose=0, steps = 500)
+print('\nTesting loss: {}, acc: {}\n'.format(loss, acc))
+```
+ended up with a happy ending:
+```ruby
+Testing loss: 0.2999370540811215, acc: 0.9401000022888184
+```
+The performance analysis can be found in this repository under images.
 ## Transfer Learning
+Last but not least, try something like transferring a keras pre-trained CNN
+
 
 ![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/simpson-family.gif)
