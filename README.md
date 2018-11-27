@@ -54,7 +54,7 @@ the label that counts as the name of the folder it is being fed from. For exampl
            x_test.append([R, G, B])  
            y_test.append([label]) 
 ```
-After proper normalization of train, validation and test dataset, we convert integer labels to one-hot vectors of size (1,4)
+After assigning proper float types to each one of train, validation and test datasets, we convert integer labels to one-hot vectors of size (1,4)
 using keras.utils for use with categorical_crossentropy:
 
 ```ruby
@@ -68,21 +68,35 @@ where num_class is set to 4.
 ## Data augmentation
 A crucial step in training any CNN is to make sure that it avoids memorization of patterns seen
 in the images for a given class. For instance, if Homer always looks something like
-
 ![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/homer.jpg)
-
 in his pictures, the neural network will take it for granted that the unseen images pretty much
 come in the same shape. To surprise the network, we should augment data, which essentially amounts to generating
 synthetic data from existing ones to increase the learning capacity and reduce memorization possibility. 
 We can illustrate what goes in this process by taking the middle image above and generate different variations of
 it such as
-
 ![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/homer_data.jpg)
+Note that this process is done by keras' useful ImageDataGenerator() function.
+```ruby
+datagen = train_datagen = ImageDataGenerator(
+    rescale=1. / 255,
+    shear_range=0.2,
+    zoom_range=0.2,
+    width_shift_range = 0.2,
+    height_shift_range = 0.2,
+    fill_mode = 'nearest',
+    horizontal_flip=True)
 
-Note that this process is done by the following piece in the code:
-
-
-
+val_datagen = ImageDataGenerator(
+        rescale= 1. / 225)    #Important: we don't need to augment the validation AND test sets
+train_generator = datagen.flow_from_directory(data_folder + '/train',  batch_size=batch_size, target_size=(img_w, img_h),
+                                              class_mode='categorical', shuffle = True)
+val_generator = val_datagen.flow_from_directory(data_folder + '/validation', batch_size=batch_size, target_size=(img_w, img_h),
+                                              class_mode='categorical', shuffle = True)
+test_generator = val_datagen.flow_from_directory(data_folder + '/test', batch_size=batch_size, target_size=(img_w, img_h),
+                                              class_mode='categorical', shuffle = True)
+```
+Keep in mind that when data augmentation is mentioned, it only refers to taking <b>train</b> data and augmenting it. So leave validation and test datasets alone. All we do here is to rescale them to bring the values encoded to something between
+0 and 1 to have the spread of data points reduced for better training later on.
 
 
 
