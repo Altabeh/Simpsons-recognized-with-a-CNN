@@ -137,7 +137,7 @@ Testing loss: 0.2999370540811215, acc: 0.9401000022888184
 ```
 The performance analysis can be found below to prove that there is no
 overfitting.
-![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/val-acc.png)
+![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/val_acc.png)
 ![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/val-loss.png)
 
 
