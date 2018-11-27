@@ -121,8 +121,11 @@ model.add(Dropout(0.5))
 model.add(layers.Dense(num_class, activation='softmax'))
 model.summary()
 ```
-Again, it is not cut-and-dried. Try your own model and see in what ways you can improve it.
-## Transfer Learning
+A yet another technique for avoiding memorization is the use of some sort of regularization 
+in machine learning. The lore is that you don't want to get a high accuracy without a large 
+learning capacity. So don't forget about those dropout layers; sure you want a smart model! 
+Again, nothing about our model is cut-and-dried. Try your own model and see in what ways you can improve this.
 
+## Transfer Learning
 
 ![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/simpson-family.gif)
