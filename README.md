@@ -175,7 +175,10 @@ your leg to function normally.) Transferring knowledge is crucial to solving a p
 another problem, yet different enough that it could help a solver realize that there is a solution for the new
 problem without ressorting to too much abstraction and experimentation.
 
-Here are finally my performance analysis summary.
+Here are my final performance analysis summary.
+
+![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/val_acc_pretrained.png)
+![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/val_loss_pretrained.png)
 
 Best,
 Alireza Behtash
