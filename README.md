@@ -97,9 +97,15 @@ test_generator = val_datagen.flow_from_directory(data_folder + '/test', batch_si
 ```
 Keep in mind that when data augmentation is mentioned, it only refers to taking <b>train</b> data and augmenting it. So leave validation and test datasets alone. All we do here is to rescale them to bring the values encoded to something between
 0 and 1 to have the spread of data points reduced for better training later on.
+## CNN Model
+Finally it is time to design a 'good' CNN for our training purpose. A good CNN is one that
+does the job with all we have done so far up to an accuracy of ~ 94%. You might wonder why I pulled this magic number and not 
+anything else. All you have to remember is that machine learning has a theory behind it, I'd personally like to call it (discrete) <b>Morse theory</b> in mathematics that has been sucessfull applied to many physics problems (A cost function is a Morse function, see <a href="https://en.wikipedia.org/wiki/Morse_theory" title="this">this</a> page for a definition). But practicaclly speaking, it is not quite Morse theory telling us what a good model is. It is all about <b>experimentation</b>. Well, yeah it is all experimentally verified with some nominal fluctuation due to noise and local machine performance, and etc. 
 
+A good model I stumbled upon tends to have more neurons in the finally hidden layers.
+Something like this would work it up to the accuracy I talked about previously:
+```ruby
 
-
-
+```
 
 ![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/simpson-family.gif)
