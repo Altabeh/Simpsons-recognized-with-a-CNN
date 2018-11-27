@@ -122,6 +122,10 @@ model.add(Dropout(0.5))
 model.add(layers.Dense(num_class, activation='softmax'))
 model.summary()
 ```
+It has a total number of 19,454,404 trainable hyperparameters which
+with a little bit of playing around you find that this might not be 
+a big of a number for training a CNN at all!
+
 A yet another technique for avoiding memorization is the use of some sort of regularization 
 in machine learning. The lore is that you don't want to get a high accuracy without a large 
 learning capacity. So don't forget about those dropout layers; sure you want a smart model! 
@@ -141,10 +145,38 @@ overfitting.
 ![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/val_acc.png)
 ![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/val_loss.png)
 
-
-
 ## Transfer Learning
-Last but not least, try something like transferring a keras pre-trained CNN
+Last but not least, try something like transferring a keras pre-trained CNN model called
+VGG16 that you can directly embed in your model. After adjusting the input 
+dimensions to that of (img_w, img_h, 3), place the VGG16 block inside
+your neural network in the first layer as follows:
+```ruby
+conv_base = VGG16(weights='imagenet',
+                  include_top=False,
+                  input_shape=(160, 160, 3))
+conv_base.summary()
 
+conv_base.trainable = False
 
+model = Sequential()
+model.add(conv_base)
+model.add(layers.Flatten())
+model.add(layers.Dropout(0.5))
+model.add(layers.Dense(256, activation='relu'))
+model.add(layers.Dense(num_class, activation='softmax'))
+```
+Here is the testing loss and accuracy with this new CNN model:
+```ruby
+Testing loss: 0.3665920792881681, acc: 0.9625000061988831
+```
+So not bad at all. Remember that we are still training the model without touching the VGG16 block; 
+this is what's known as 'transfer leaning'. (It is as if you just recieved a knee replacement -it aids
+your leg to function normally.) Transferring knowledge is crucial to solving a problem that is very similar to
+another problem, yet different enough that it could help a solver realize that there is a solution for the new
+problem without ressorting to too much abstraction and experimentation.
+
+Here are finally my performance analysis summary.
+
+Best,
+Alireza Behtash
 ![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/simpson-family.gif)
