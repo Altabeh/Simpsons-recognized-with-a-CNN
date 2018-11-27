@@ -73,7 +73,7 @@ come in the same shape. To surprise the network, we should augment data that bas
 synthetic data from existing ones to increase the learning capacity and reduce memorization possibility.
 Augmenting the middle image from sample images, we get
 
-![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/homer.jpg)
+![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/homer_data.jpg)
 
 
 
