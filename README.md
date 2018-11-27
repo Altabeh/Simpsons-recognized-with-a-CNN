@@ -54,6 +54,13 @@ the label that counts as the name of the folder it is being fed from.
               x_test.append([R, G, B])  
               y_test.append([label]) 
 ```
+We then convert integer labels to one-hot vectors of size (1,4)
+using keras.utils for use with categorical_crossentropy.
 
+```ruby
+y_train_cat = keras.utils.to_categorical(y_train, num_class) 
+y_test_cat = keras.utils.to_categorical(y_test, num_class)
+y_val_cat = keras.utils.to_categorical(y_val, num_class) 
+```
 
 ![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/simpson-family.gif)
