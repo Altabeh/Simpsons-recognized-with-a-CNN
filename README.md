@@ -62,5 +62,9 @@ y_train_cat = keras.utils.to_categorical(y_train, num_class)
 y_test_cat = keras.utils.to_categorical(y_test, num_class)
 y_val_cat = keras.utils.to_categorical(y_val, num_class) 
 ```
+## Data augmentation
+A crucial step in training any CNN is to make sure that it avoids memorization of patterns seen
+in the images for a given class. For instance, if Homer always looks like
+
 
 ![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/simpson-family.gif)
