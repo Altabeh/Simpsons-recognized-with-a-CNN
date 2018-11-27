@@ -64,7 +64,21 @@ y_val_cat = keras.utils.to_categorical(y_val, num_class)
 ```
 ## Data augmentation
 A crucial step in training any CNN is to make sure that it avoids memorization of patterns seen
-in the images for a given class. For instance, if Homer always looks like
+in the images for a given class. For instance, if Homer always looks something like
+
+![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/homer.jpg)
+
+in his pictures, the neural network will take it for granted that the unseen pictures pretty much
+come in the same shape. To surprise the network, we should augment data that basically is the act of generating
+synthetic data from existing ones to increase the learning capacity and reduce memorization possibility.
+Augmenting the middle image from sample images, we get
+
+![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/homer.jpg)
+
+
+
+
+
 
 
 ![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/simpson-family.gif)
