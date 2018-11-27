@@ -45,35 +45,42 @@ data_folder = extract(dest_filename)
 We have three folders: train (3000 images), validation (1000 images) and test (800 images), each of which
 contains four directories for each character. 
 Once an image is read, the code takes the color data and stores it in an array together with 
-the label that counts as the name of the folder it is being fed from.
+the label that counts as the name of the folder it is being fed from. For example
 
 ```ruby
-              R = im[:, :, 0]
-              G = im[:, :, 1]
-              B = im[:, :, 2]
-              x_test.append([R, G, B])  
-              y_test.append([label]) 
+           R = im[:, :, 0]
+           G = im[:, :, 1]
+           B = im[:, :, 2]
+           x_test.append([R, G, B])  
+           y_test.append([label]) 
 ```
-We then convert integer labels to one-hot vectors of size (1,4)
-using keras.utils for use with categorical_crossentropy.
+After proper normalization of train, validation and test dataset, we convert integer labels to one-hot vectors of size (1,4)
+using keras.utils for use with categorical_crossentropy:
 
 ```ruby
 y_train_cat = keras.utils.to_categorical(y_train, num_class) 
 y_test_cat = keras.utils.to_categorical(y_test, num_class)
 y_val_cat = keras.utils.to_categorical(y_val, num_class) 
 ```
+
+where num_class is set to 4.
+
 ## Data augmentation
 A crucial step in training any CNN is to make sure that it avoids memorization of patterns seen
 in the images for a given class. For instance, if Homer always looks something like
 
 ![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/homer.jpg)
 
-in his pictures, the neural network will take it for granted that the unseen pictures pretty much
-come in the same shape. To surprise the network, we should augment data that basically is the act of generating
-synthetic data from existing ones to increase the learning capacity and reduce memorization possibility.
-Augmenting the middle image from sample images, we get
+in his pictures, the neural network will take it for granted that the unseen images pretty much
+come in the same shape. To surprise the network, we should augment data, which essentially amounts to generating
+synthetic data from existing ones to increase the learning capacity and reduce memorization possibility. 
+We can illustrate what goes in this process by taking the middle image above and generate different variations of
+it such as
 
 ![alt text](https://github.com/Altabeh/Simpsons-recognized-with-a-CNN/blob/master/homer_data.jpg)
+
+Note that this process is done by the following piece in the code:
+
 
 
 
