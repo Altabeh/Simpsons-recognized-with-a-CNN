@@ -65,7 +65,7 @@ y_val_cat = keras.utils.to_categorical(y_val, num_class)
 
 where num_class is set to 4. Since we are going to end up using a data generator for augmentation purposes, one
 can forget about the labels generated up to this point as they are to be automatically taken care of and put into
-a one-hot vector form by keras' useful ImageDataGenerator() function. So extracting labels as we have done so far are just for those people who intend to train their model without augmentation.
+a one-hot vector form by keras' useful ImageDataGenerator() function. So extracting labels as we have done so far is just for those who intend to train their model without augmentation.
 
 ## Data augmentation
 A crucial step in training any CNN is to make sure that it avoids memorization of patterns seen
