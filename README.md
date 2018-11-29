@@ -1,9 +1,9 @@
 # Identifying Simpson family members by training a deep Convolutional Neural Network (CNN)
-First things first, we'd like to extend our appologies to Santa's Little Helper, Marge and Snowball II for not being
+First things first, we'd like to extend our apologies to Santa's Little Helper, Marge, and Snowball II for not being
 included in our classifier.   
 
 ## Disclaimer
-Given the RGB nature of this exercise, it would take about an hour to finish the training part over 3000 sample images in 30 epochs using an average GPU even though the dataset size may not seem big. So it is strongly recommedned not to try this on a CPU computer unless the user does not have access to a GPU.
+Given the RGB nature of this exercise, it would take about an hour to finish the training part over 3000 sample images in 30 epochs using an average GPU even though the dataset size may not seem big. So it is strongly recommended not to try this on a CPU computer unless the user does not have access to a GPU.
 
 
 ## Dataset 
@@ -44,8 +44,7 @@ data_folder = extract(dest_filename)
 ```
 We have three folders: train (3000 images), validation (1000 images) and test (800 images), each of which
 contains four directories for each character. 
-Once an image is read, the code takes the color data and stores it in an array together with 
-the label that counts as the name of the folder it is being fed from. For example
+Once an image is read, the code takes the color data and stores it in an array together with the label that counts as the name of the folder it is being fed from. For example
 
 ```ruby
            R = im[:, :, 0]
@@ -128,9 +127,7 @@ It has a total number of 19,454,404 trainable hyperparameters which
 with a little bit of playing around you find that this might not be 
 a big of a number for training a CNN at all!
 
-A yet another effective technique for avoiding memorization is the use of some sort of regularization 
-in machine learning. The lore is that you don't want to get a high accuracy without a large 
-learning capacity. So don't forget about those dropout layers; sure you want a smart model! 
+A yet another effective technique for avoiding memorization is the use of some sort of regularization in machine learning. The lore is that you don't want to get a high accuracy without a large learning capacity. So don't forget about those dropout layers; sure you want a smart model! 
 Again, nothing about our model is cut-and-dried. Try your own model and see in what ways you can improve this.
 So after training, this piece of code 
 ```ruby
@@ -172,10 +169,10 @@ Here is the testing loss and accuracy with this new CNN model:
 Testing loss: 0.3665920792881681, acc: 0.9625000061988831
 ```
 So not bad at all. Remember that we are still training the model without touching the VGG16 block; 
-this is what's known as 'transfer leaning'. (It is as if you just recieved a knee replacement -it aids
+this is what's known as 'transfer leaning'. (It is as if you just received a knee replacement -it aids
 your leg to function normally.) Transferring knowledge is crucial to solving a problem that is very similar to
 another problem, yet different enough that it could help a solver realize that there is a solution for the new
-problem without ressorting to too much abstraction and experimentation.
+problem without resorting to too much abstraction and experimentation.
 
 Here is my final performance analysis summary.
 
