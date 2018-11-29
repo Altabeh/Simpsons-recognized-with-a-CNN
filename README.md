@@ -137,7 +137,7 @@ So after training, this piece of code
 loss, acc = model.evaluate_generator(test_generator, verbose=0, steps = 500)
 print('\nTesting loss: {}, acc: {}\n'.format(loss, acc))
 ```
-ended up with a happily:
+ended up happily with:
 ```ruby
 Testing loss: 0.2999370540811215, acc: 0.9401000022888184
 ```
