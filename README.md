@@ -128,7 +128,7 @@ It has a total number of 19,454,404 trainable hyperparameters which
 with a little bit of playing around you find that this might not be 
 a big of a number for training a CNN at all!
 
-A yet another technique for avoiding memorization is the use of some sort of regularization 
+A yet another effective technique for avoiding memorization is the use of some sort of regularization 
 in machine learning. The lore is that you don't want to get a high accuracy without a large 
 learning capacity. So don't forget about those dropout layers; sure you want a smart model! 
 Again, nothing about our model is cut-and-dried. Try your own model and see in what ways you can improve this.
