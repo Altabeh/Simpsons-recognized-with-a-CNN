@@ -24,7 +24,7 @@ To unzip the main file
 the-simpsons-dataset.zip
 ```
 
-after having it downloaded, you may use the following block in main_train.py that does this automatically:
+After having it downloaded, you may use the following block in main_train.py that does this automatically:
 
 ```ruby
 def extract(filename, force=False):
