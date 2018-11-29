@@ -98,7 +98,7 @@ test_generator = val_datagen.flow_from_directory(data_folder + '/test', batch_si
                                               class_mode='categorical', shuffle = True)
 ```
 Keep in mind that when data augmentation is mentioned, it only refers to taking <b>train</b> data and augmenting it. So leave validation and test datasets alone. All we do here is to rescale them to bring the values encoded to something between
-0 and 1 to have the spread of data points reduced for better training later on.
+0 and 1. This reduces the the spread of data points for better training later on.
 ## CNN Model
 Finally it is time to design a 'good' CNN for our training purpose. A good CNN is one that
 does the job with all we have done so far up to an accuracy of ~ 94%. You might wonder why I pulled this magic number and not 
