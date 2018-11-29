@@ -149,7 +149,7 @@ overfitting.
 
 ## Transfer Learning
 Last but not least, try something like transferring a keras pre-trained CNN model called
-VGG16 that you can directly embed in your model. After adjusting the input 
+VGG16 directly to your model. After adjusting the input 
 dimensions to that of (img_w, img_h, 3), place the VGG16 block inside
 your neural network in the first layer as follows:
 ```ruby
