@@ -183,7 +183,7 @@ datagen = train_datagen = ImageDataGenerator(
     horizontal_flip=True)
 
 val_datagen = ImageDataGenerator(
-        rescale= 1. / 225)    #Important: we don't need to augment the validation AND test sets
+        rescale= 1. / 225)    
 train_generator = datagen.flow_from_directory(data_folder + '/train',  batch_size=batch_size, target_size=(img_w, img_h),
                                               class_mode='categorical', shuffle = True)
 val_generator = val_datagen.flow_from_directory(data_folder + '/validation', batch_size=batch_size, target_size=(img_w, img_h),
